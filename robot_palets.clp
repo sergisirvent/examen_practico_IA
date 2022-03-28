@@ -10,15 +10,15 @@
 (defrule coger_caja_naranjas
 
     (capacidadMaxRobot ?capMax)
-    (almacen lineaPedido $?pre0 cajaNaranjas ?naranjas_cogidas $?pre palet cajaNaranjas ?naranjas_existentes $?post $?pre2 robot ?cajas_actuales $?post2)
-    (pedido $?pre cajaNaranjas ?naranjas_pedidas $?post)
+    (almacen lineaPedido $?pre0 cajaNaranjas ?naranjas_cogidas $?pre palet cajaNaranjas ?naranjas_existentes $?post robot ?cajas_actuales $?post2)
+    (pedido $?preped cajaNaranjas ?naranjas_pedidas $?postped)
     (test (<= ?cajas_actuales ?capMax))
     (test (> ?naranjas_existentes 0))
     (test (> ?naranjas_pedidas 0))
 
     =>
 
-    (assert (almacen lineaPedido $?pre0 cajaNaranjas (+ ?naranjas_cogidas 1) $?pre palet cajaNaranjas (- ?naranjas_existentes 1) $?post $?pre2 robot (+ ?cajas_actuales 1) $?post2))
+    (assert (almacen lineaPedido $?pre0 cajaNaranjas (+ ?naranjas_cogidas 1) $?pre palet cajaNaranjas (- ?naranjas_existentes 1) $?post robot (+ ?cajas_actuales 1) $?post2))
 
 
 )
@@ -27,7 +27,7 @@
 
     (capacidadMaxRobot ?capMax)
     (almacen lineaPedido $?pre0 cajaManzanas ?manzanas_cogidas $?pre palet cajaManzanas ?manzanas_existentes $?post $?pre2 robot ?cajas_actuales $?post2)
-    (pedido $?pre cajaManzanas ?manzanas_pedidas $?post)
+    (pedido $?preped cajaManzanas ?manzanas_pedidas $?postped)
     (test (<= ?cajas_actuales ?capMax))
     (test (> ?manzanas_existentes 0))
     (test (> ?manzanas_pedidas 0))
@@ -43,7 +43,7 @@
 
     (capacidadMaxRobot ?capMax)
     (almacen lineaPedido $?pre0 cajaCaquis ?caquis_cogidas $?pre palet cajaCaquis ?caquis_existentes $?post $?pre2 robot ?cajas_actuales $?post2)
-    (pedido $?pre cajaCaquis ?caquis_pedidas $?post)
+    (pedido $?preped cajaCaquis ?caquis_pedidas $?postped)
     (test (<= ?cajas_actuales ?capMax))
     (test (> ?caquis_existentes 0))
     (test (> ?caquis_pedidas 0))
@@ -58,7 +58,7 @@
 
     (capacidadMaxRobot ?capMax)
     (almacen lineaPedido $?pre0 cajaUvas ?uvas_cogidas $?pre palet cajaUvas ?uvas_existentes $?post $?pre2 robot ?cajas_actuales $?post2)
-    (pedido $?pre cajaUvas ?uvas_pedidas $?post)
+    (pedido $?preped cajaUvas ?uvas_pedidas $?post)
     (test (<= ?cajas_actuales ?capMax))
     (test (> ?uvas_existentes 0))
     (test (> ?uvas_pedidas 0))
